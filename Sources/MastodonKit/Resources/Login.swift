@@ -10,11 +10,11 @@ public struct Login {
     ///   - username: The user's username or e-mail address.
     ///   - password: The user's password.
     /// - Returns: Resource for `LoginSettings`.
-    public static func silent(clientID: String, clientSecret: String, scope: AccessScope, username: String, password: String) -> LoginSettingsResource {
+    public static func silent(clientID: String, clientSecret: String, scopes: [AccessScope], username: String, password: String) -> LoginSettingsResource {
         let dictionary: [String : String?] = [
             "client_id": clientID,
             "client_secret": clientSecret,
-            "scope": scope.rawValue,
+            "scope": scopes.map(toString).joined(separator: "+"),
             "grant_type": "password",
             "username": username,
             "password": password
