@@ -21,4 +21,17 @@ public struct Clients {
 
         return ClientApplicationResource(path: "/api/v1/apps", parameters: parameters, method: .post, parse: ClientApplicationResource.parser)
     }
+    
+    public static func getOAuthConfirmURL(baseURLSting: String, redirectURI: String = "urn:ietf:wg:oauth:2.0:oob", clientId: String, responseType: String = "code", scopes: [AccessScope]) -> URL {
+        let dictionary: [String: String?] = [
+            "client_id": clientId,
+            "response_type": responseType,
+            "redirect_uri": redirectURI,
+            "scope": scopes.map(toString).joined(separator: " ")
+        ]
+        let parameters = dictionary.stringFromHttpParameters()
+        let urlString = String("\(baseURLSting)/oauth/authorize?\(parameters)")
+        let OAuthConfirmURL = URL(string: urlString!)
+        return OAuthConfirmURL!
+    }
 }
