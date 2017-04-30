@@ -45,4 +45,10 @@ public final class Client {
 
         task.resume()
     }
+    
+    public func getURL<Model>(_ resource: Resource<Model>) -> URL {
+        let components = URLComponents(baseURL: self.baseURL, resource: resource)
+        return components.url!
+    }
+    
 }
