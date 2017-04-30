@@ -3,11 +3,11 @@ import XCTest
 
 class LoginTests: XCTestCase {
     func testSilentLogin() {
-        let resource = Login.silent(clientID: "client id", clientSecret: "client secret", scope: .read, username: "foo", password: "123")
+        let resource = Login.silent(clientID: "client id", clientSecret: "client secret", scopes: [.read, .write, .follow], username: "foo", password: "123")
 
         let expectedClientID = URLQueryItem(name: "client_id", value: "client id")
         let expectedClientSecret = URLQueryItem(name: "client_secret", value: "client secret")
-        let expectedScope = URLQueryItem(name: "scope", value: "read")
+        let expectedScope = URLQueryItem(name: "scope", value: "read+write+follow")
         let expectedGrantType = URLQueryItem(name: "grant_type", value: "password")
         let expectedUsername = URLQueryItem(name: "username", value: "foo")
         let expectedPassword = URLQueryItem(name: "password", value: "123")
