@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "MastodonKit"
-  s.version     = "1.0.8"
+  s.version     = "1.0.9"
   s.summary     = "MastodonKit for Mastodon API"
   s.homepage     = "https://github.com/junjun0516"
   s.license     = { :type => "MIT" }
