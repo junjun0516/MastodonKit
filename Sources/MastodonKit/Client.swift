@@ -1,7 +1,7 @@
 import Foundation
 
 public final class Client {
-    let baseURL: String
+    public let baseURL: String
     public var accessToken: String?
     lazy var session = URLSession.shared
 
